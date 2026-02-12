@@ -38,22 +38,52 @@ A Heartbeat is one task: < 300 lines, 1-4 hours, all 5 stages. A bug fix is one 
 
 ## Quick Start
 
-1. Copy `templates/project-context.md` into your project root and fill it in
-2. On your next task, follow the [lifecycle](lifecycle.md)
-3. Use the [templates](templates/) for each stage
-4. Log what happened in [decision-log.md](templates/decision-log.md)
+1. Create `project-context.md` in your project root and fill it in:
+
+```bash
+curl -sO https://raw.githubusercontent.com/oleksiireshetov/ai-engineering-playbook/main/templates/project-context.md
+```
+
+2. Create a Heartbeat folder and pull templates:
+
+```bash
+# Create feature folder
+mkdir -p docs/features/your-feature-name && cd docs/features/your-feature-name
+
+# Pull templates
+curl -sO https://raw.githubusercontent.com/oleksiireshetov/ai-engineering-playbook/main/templates/idea-brief.md
+curl -sO https://raw.githubusercontent.com/oleksiireshetov/ai-engineering-playbook/main/templates/decisions.md
+curl -sO https://raw.githubusercontent.com/oleksiireshetov/ai-engineering-playbook/main/templates/task-breakdown.md
+```
+
+3. Follow the [lifecycle](lifecycle.md) and log what happened:
+
+```bash
+curl -sO https://raw.githubusercontent.com/oleksiireshetov/ai-engineering-playbook/main/templates/decision-log.md
+```
 
 ## What's Inside
 
+### Lifecycle: The Heartbeat
+
+The core of the playbook. A repeating delivery cycle with stages, steps, gates, and rules.
+
 | File | What | When to Read |
 |---|---|---|
-| [lifecycle.md](lifecycle.md) | Full lifecycle — stages, steps, gates, rules | Reference during work |
+| [lifecycle.md](lifecycle.md) | Full lifecycle reference | During work |
 | [lifecycle-overview.md](lifecycle-overview.md) | Simplified one-pager | Share for review / onboarding |
-| [templates/project-context.md](templates/project-context.md) | Living project context | Start here, update every Heartbeat |
-| [templates/idea-brief.md](templates/idea-brief.md) | THINK: write your brief | Step 1 of every task |
-| [templates/decisions.md](templates/decisions.md) | THINK: architecture decisions + NFR check | Before BUILD |
-| [templates/task-breakdown.md](templates/task-breakdown.md) | THINK: break feature into Heartbeats | Mode B features |
-| [templates/decision-log.md](templates/decision-log.md) | LEARN: log what happened | After every Heartbeat |
+
+### Templates
+
+Copy these into your project. Fill them in as you go through the lifecycle.
+
+| File | Stage | Purpose |
+|---|---|---|
+| [project-context.md](templates/project-context.md) | All stages | Living project context — start here |
+| [idea-brief.md](templates/idea-brief.md) | THINK | Write your brief |
+| [decisions.md](templates/decisions.md) | THINK | Architecture decisions + NFR check |
+| [task-breakdown.md](templates/task-breakdown.md) | THINK | Break feature into Heartbeats |
+| [decision-log.md](templates/decision-log.md) | LEARN | Log what happened |
 
 ## Principles
 
