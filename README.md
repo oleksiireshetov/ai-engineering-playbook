@@ -36,6 +36,8 @@ context → THINK → BUILD → REVIEW → SHIP → LEARN
 
 A Heartbeat is one task: < 300 lines, 1-4 hours, all 5 stages. A bug fix is one Heartbeat. A feature is a series of Heartbeats. The rhythm stays the same.
 
+> Try it on one task. If the output is cleaner and the process is clearer — keep going.
+
 ## Quick Start
 
 1. Create `project-context.md` in your project root and fill it in:
