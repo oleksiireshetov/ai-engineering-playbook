@@ -1,15 +1,19 @@
 # Idea Brief
 
-> Version: 0.2
-> Input: Raw idea in your head
-> Output: Scoped brief ready for AI stress-test
+**Stage:** THINK • **Version:** 0.3
 
-> **THINK · Step 1 · 10 min · You write · No AI · No code**
+**Input:** Raw idea
+
+**Output:** Scoped brief for AI stress-test
+
+**Protocol:** Step 1 • 10 min • Human Only • No AI / No Code
+
+> **CORE PRINCIPLE**
 >
 > If you can't explain it without AI, you don't understand it enough to guide AI.
-> **When to use:** Once per feature (Macro-THINK). Individual Heartbeats within a feature do NOT need their own idea-brief — the task description in task-breakdown.md is your brief.
 
-## What
+---
+## Concept (what)
 
 [One sentence. What are you building or changing?]
 
@@ -37,12 +41,29 @@
 
 [How will you test that this works? Be specific and testable. E.g., "When test fails, configured webhook receives POST within 30 seconds with correct payload." Not "webhooks work."]
 
-## Complexity
+---
 
-- [ ] **Hotfix** — broken in prod, fix now → Mode A
-- [ ] **Small** (< 1 day) → Mode A
-- [ ] **Medium** (1-5 days) → Mode A or B
-- [ ] **Feature** (5+ days) → Mode B
+## Next Step: AI Stress-Test
+
+Feed this brief + `project-context.md` to AI with this prompt:
+
+```text
+Stress-test this idea brief. Challenge it, assess edge cases, what am I missing, trade-offs. Use numbered questions so I can reply by number. After I answer, provide an updated version of the brief.
+```
+
+**One round.** AI asks questions, you answer by number, AI produces updated brief. If new questions emerge from answers — don't loop. Capture them in [backlog.md](./backlog.md) with a trigger for when to revisit.
+
+**To defer items during stress-test, answer:**
+
+```text
+Not in scope. Add to backlog.
+```
+
+AI will capture it. Full deferral format is in [backlog.md](./backlog.md).
+
+AI will incorporate your answers and produce an updated, stress-tested version of this brief. That updated version becomes the input for [decisions.md](./decisions.md).
+
+The updated brief replaces this file's content — one file, updated in place.
 
 ---
 

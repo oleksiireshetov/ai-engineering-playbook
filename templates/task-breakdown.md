@@ -1,14 +1,26 @@
 # Task Breakdown
 
-> Version: 0.2
-> Input: idea-brief.md + decisions.md
-> Output: Ordered list of Heartbeats with dependencies, ready for BUILD
+**Stage:** THINK • **Version:** 0.3
 
-> **THINK · Step 5 · 15 min · With AI**
+**Input:** idea-brief.md + decisions.md
+
+**Output:** Ordered list of Heartbeats with dependencies
+
+**Protocol:** Step 4 • 15 min • With AI • Mode B only
+
+> **CORE PRINCIPLE**
 >
-> Each task = one Heartbeat. Target < 300 lines per task.
+> Each task = one Heartbeat. Target < 300 lines. Don't sacrifice quality to hit the number.
 
-> Prompt: "Based on this brief and architecture decisions, break this into ordered tasks. Each task: what it does, input files, output files, dependencies on other tasks, estimated lines. Target each task under 300 lines but don't sacrifice quality or split coherent logic just to hit the number. One task = one AI session."
+---
+
+### Prompt
+
+Feed this to the AI to generate the initial list:
+
+```text
+Based on this brief and architecture decisions, break this into ordered tasks. Each task: what it does, input files, output files, dependencies on other tasks, estimated lines. Target each task under 300 lines but don't sacrifice quality or split coherent logic just to hit the number. One task = one AI session.
+```
 
 > **Full-stack features:** split by layer. API = one Heartbeat, UI = another. Mixing backend and frontend in one AI session produces worse output — the context is too broad.
 

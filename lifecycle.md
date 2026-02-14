@@ -164,17 +164,27 @@ You define the problem. AI helps you stress-test it. You make the decisions.
 
 | Input | Output | Key |
 |---|---|---|
-| Your head → then brief + project-context.md + DB schema | idea-brief.md → decisions.md → task-breakdown.md | Brief is no-AI. Everything after is with AI but NO CODE. |
+| Your head → then stress-tested brief + project-context.md + DB schema | idea-brief.md → decisions.md → task-breakdown.md + backlog.md | Brief is no-AI. Stress-test is one round. Everything after is with AI but NO CODE. |
 
 **Steps (full, for Mode A or Macro-THINK in Mode B):**
 
 | Step | Input | Output | Key | Time |
 |---|---|---|---|---|
 | **Write Brief** | Your head | idea-brief.md | No AI, no code. Answer: what, why, who, where, constraints, out of scope. | 10 min |
-| **AI Stress-Test** | idea-brief.md | Updated idea-brief.md (gaps fixed) | Feed brief to AI. Ask: "What am I missing? What edge cases? Ask me questions." | 10 min |
-| **Architecture Decisions** | brief + project-context.md + DB schema | decisions.md | Ask AI for 2-3 options with pros/cons. NO CODE. You decide. | 20 min |
-| **NFR Check** *(gate)* | decisions.md | NFR notes added to decisions.md | Pressure-test: security, performance, observability, compliance, error handling, rollback. | 5 min |
-| **Task Breakdown** | brief + decisions | task-breakdown.md | Each task < 300 lines. List input/output files. Map dependencies. One task = one Heartbeat. | 15 min |
+| **AI Stress-Test** | idea-brief.md + project-context.md | Updated idea-brief.md (gaps fixed) | One round: AI asks numbered questions, you answer by number, AI produces updated brief. Deferred items go to backlog.md. | 10 min |
+| **Architecture Decisions** | Stress-tested brief + project-context.md + DB schema | decisions.md | Same AI session. Ask for 2-3 options with pros/cons. NO CODE. You decide. | 20 min |
+| **NFR Check** *(gate)* | decisions.md | NFR notes added to decisions.md | Same session. Pressure-test: security, performance, observability, compliance, error handling, rollback. | 5 min |
+| **Mode Selection** | decisions.md | Mode A or B selected | Based on scope and architecture, pick mode. If Mode B → continue to breakdown. If Mode A → go to BUILD. | 2 min |
+| **Task Breakdown** *(Mode B only)* | brief + decisions | task-breakdown.md | Each task targets < 300 lines. List input/output files. Map dependencies. One task = one Heartbeat. | 15 min |
+
+**The flow:**
+
+```
+idea-brief.md (you write, no AI)
+  → stress-test (AI challenges, you answer by number, AI updates brief)
+  → decisions.md (architecture options + NFR check + mode selection)
+  → task-breakdown.md (Mode B only)
+```
 
 **THINK inside a Mode B Heartbeat (light):**
 
@@ -188,10 +198,10 @@ You define the problem. AI helps you stress-test it. You make the decisions.
 
 | Level | What you do | What you DON'T do | Time |
 |---|---|---|---|
-| **Macro-THINK** (once per feature) | Brief, stress-test, decisions, NFR check, breakdown | Write code | 60 min |
+| **Macro-THINK** (once per feature) | Brief, stress-test, decisions, NFR check, mode selection, breakdown | Write code | 60 min |
 | **Heartbeat THINK** (per task) | Re-read project-context.md, review task from breakdown | New brief, new stress-test, new decisions | 5 min |
 
-→ [idea-brief.md template](templates/idea-brief.md) · [decisions.md template](templates/decisions.md) · [task-breakdown.md template](templates/task-breakdown.md)
+→ [idea-brief.md template](templates/idea-brief.md) · [decisions.md template](templates/decisions.md) · [task-breakdown.md template](templates/task-breakdown.md) · [backlog.md template](templates/backlog.md)
 
 ---
 
@@ -305,7 +315,7 @@ The stage that makes the cycle compound. Without LEARN, every Heartbeat starts f
 
 | Input | Output | Key |
 |---|---|---|
-| What you learned during this Heartbeat | Updated project-context.md + decision-log.md | Do it now. Not later. Later means never. |
+| What you learned during this Heartbeat | Updated project-context.md + heartbeat-log.md | Do it now. Not later. Later means never. |
 
 **Steps (Heartbeat LEARN — after every task):**
 
@@ -324,11 +334,11 @@ If you have an answer — put it in project-context.md. If you don't — you're 
 | Step | Input | Output | Key | Time |
 |---|---|---|---|---|
 | **Update Context** | Full feature changes | Updated project-context.md | Broader patterns, architectural changes, new conventions that emerged. | 5 min |
-| **Decision Log Entry** | What happened across all Heartbeats | Entry in decision-log.md | Real numbers. Where did architecture decisions hold up? Where did they break? Would you use AI for this again? | 10 min |
+| **Decision Log Entry** | What happened across all Heartbeats | Entry in heartbeat-log.md | Real numbers. Where did architecture decisions hold up? Where did they break? Would you use AI for this again? | 10 min |
 
 **Do it now. Not "later." Later means never.**
 
-→ [decision-log.md template](templates/decision-log.md)
+→ [heartbeat-log.md template](templates/heartbeat-log.md)
 
 ---
 

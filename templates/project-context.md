@@ -1,11 +1,18 @@
 # Project Context
 
-> Version: 0.2
-> The living document that makes every AI session smarter than the last.
-> Feed it to AI at the start of every THINK and BUILD session.
-> Update it at the end of every Heartbeat (LEARN stage).
+**Stage:** All stages • **Version:** 0.3
+
+**Input:** Your project's current state
+
+**Output:** Living context that makes every AI session smarter than the last
+
+**Protocol:** Feed to AI every session • Update every Heartbeat • One per repo
+
+> **CORE PRINCIPLE**
 >
-> Required question before updating: *What will AI get wrong next time if I don't update this now?*
+> Without this, every AI session starts from zero. With it, Heartbeat #10 is smarter than Heartbeat #1.
+
+--- 
 
 ## Project
 
@@ -44,7 +51,7 @@
 
 [Core tables with purpose and key relationships. What AI needs to write correct code.]
 
-```
+```sql
 users          — id, email, role, created_at
 orders         — id, user_id, status, amount, currency
 transactions   — id, order_id, psp_id, status, response_code
@@ -54,7 +61,7 @@ transactions   — id, order_id, psp_id, status, response_code
 
 [Main endpoints AI will interact with. Method, path, purpose.]
 
-```
+```http
 POST   /api/v1/orders          — Create order
 GET    /api/v1/orders/:id      — Get order by ID
 POST   /api/v1/payments/init   — Initialize payment with PSP

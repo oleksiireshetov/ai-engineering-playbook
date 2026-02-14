@@ -1,8 +1,8 @@
 # AI Engineering Playbook 💓
 
-> v0.2.0 — Early draft. Feedback welcome.
+> v0.3.0 — Early draft. Feedback welcome.
 
-A step-by-step playbook for building software with AI. Not a new SDLC — a discipline layer you add on top of whatever process you already use.
+A step-by-step lifecycle for building software with AI. Not a new SDLC — a discipline layer you add on top of whatever process you already use.
 
 ## Why This Exists
 
@@ -20,11 +20,7 @@ What's missing is a lightweight lifecycle that plugs into your existing workflow
 
 This playbook fills that gap. Built from real production experience with AI-assisted development in a regulated, high-volume environment — not from theory.
 
-## The Problem
-
-AI changes the speed of code generation, but not the need for discipline. Without structure, you get **context rot** — a codebase full of hallucinations and tech debt that no one fully understands.
-
-## The Solution: The Heartbeat
+## How It Works: The Heartbeat
 
 Every piece of work — feature, bug fix, hotfix, refactor — follows the same rhythm:
 
@@ -61,7 +57,7 @@ curl -sO https://raw.githubusercontent.com/oleksiireshetov/ai-engineering-playbo
 3. Follow the [lifecycle](lifecycle.md) and log what happened:
 
 ```bash
-curl -sO https://raw.githubusercontent.com/oleksiireshetov/ai-engineering-playbook/main/templates/decision-log.md
+curl -sO https://raw.githubusercontent.com/oleksiireshetov/ai-engineering-playbook/main/templates/heartbeat-log.md
 ```
 
 ## What's Inside
@@ -83,9 +79,16 @@ Copy these into your project. Fill them in as you go through the lifecycle.
 |---|---|---|
 | [project-context.md](templates/project-context.md) | All stages | Living project context — start here |
 | [idea-brief.md](templates/idea-brief.md) | THINK | Write your brief |
-| [decisions.md](templates/decisions.md) | THINK | Architecture decisions + NFR check |
+| [decisions.md](templates/decisions.md) | THINK | Architecture decisions + NFR check + mode selection |
 | [task-breakdown.md](templates/task-breakdown.md) | THINK | Break feature into Heartbeats |
-| [decision-log.md](templates/decision-log.md) | LEARN | Log what happened |
+| [backlog.md](templates/backlog.md) | THINK | Deferred items from stress-test and decisions |
+| [heartbeat-log.md](templates/heartbeat-log.md) | BUILD + REVIEW + LEARN | Log each Heartbeat |
+
+### Coming Soon
+
+- **Rules** — `.cursorrules` templates and system prompts for AI sessions
+- **Prompts** — proven prompts for each stage (stress-test, review, breakdown)
+- **Patterns** — what works and what doesn't, by task type
 
 ## Principles
 
@@ -97,10 +100,26 @@ This isn't really about AI. It's about:
 
 AI just forces these truths to the surface faster.
 
+## When Not to Use This
+
+- **Throwaway prototypes and hackathons** — speed matters more than structure
+- **Spikes and exploration** — you don't know what you're building yet
+- **Solo projects under 3 days** — the overhead isn't worth it
+- **Teams under deadline pressure who haven't felt AI quality pain yet** — they'll reject it. Wait until they feel it.
+
+This playbook solves a specific problem: AI-generated code degrading your codebase over time. If that's not your problem yet, you don't need this yet.
+
 ## Contributing
 
-This playbook is in early development. Feedback, ideas, and real-world experience welcome — open an issue.
+This playbook grows from real experience. Theory is cheap — show your data.
+
+Since I am keeping the core templates restricted to stress-tested patterns to avoid "Context Rot," the best way to contribute is via discussion.
+
+- **Discussions:** Open an Issue if you have a question or a different perspective.
+- **Data:** If you've used the Decision Log and have metrics, share them in the Issues.
 
 ## License
 
 MIT — use it, fork it, make it yours.
+
+

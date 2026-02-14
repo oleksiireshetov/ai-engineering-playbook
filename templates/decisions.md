@@ -1,26 +1,30 @@
 # Architecture Decisions
 
-> Version: 0.2
-> Input: idea-brief.md + project-context.md + DB schema
-> Output: Architecture decisions + NFR notes ready for task breakdown
+**Stage:** THINK • **Version:** 0.3
 
-> **THINK · Steps 2-4 · 30 min · With AI · NO CODE**
+**Input:** Stress-tested idea-brief.md + project-context.md + DB schema
+
+**Output:** Architecture decisions + NFR notes + mode selection
+
+**Protocol:** Step 2-3 • 30 min • With AI • No Code
+
+> **CORE PRINCIPLE**
 >
-> Feed AI your brief, project context, and schema. Ask for options. Challenge them. You decide.
+> Continue in the same AI session as the stress-test — context is already loaded.
+
+---
 
 ## Context Given to AI
 
 [What did you feed in? Brief, project-context.md, schema files, existing code — list it so the conversation is reproducible.]
 
-## AI Stress-Test
-
-> Prompt: "Review this brief. Give me numbered questions about edge cases, missing requirements, and risks. One question per line. I'll reply by number."
-
-[Paste the numbered questions AI asked and your answers here.]
-
 ## Options Explored
 
-> Prompt: "Given this brief and project context, suggest 2-3 architecture approaches. For each: approach summary, pros, cons, estimated complexity. No code."
+Feed this prompt to the AI:
+
+```text
+Given this stress-tested brief and project context, suggest 2-3 architecture approaches. For each: approach summary, pros, cons, estimated complexity. No code.
+```
 
 ### Option A: [Name]
 
@@ -58,10 +62,15 @@
 
 ## NFR Check (gate)
 
-> Continue in the same AI session — context is already loaded.
-> Prompt: "Review these architecture decisions against these NFRs: security, performance, observability, error handling, rollback. Flag any concerns."
+Feed this prompt to the AI:
 
-Pressure-test the chosen approach before BUILD starts. Mark each: ✅ covered · ⚠️ needs attention · ➖ not applicable.
+```text
+Review these architecture decisions against these NFRs: security, performance, observability, error handling, rollback. Flag any concerns.
+```
+
+Pressure-test the chosen approach before BUILD starts. 
+
+Mark each: PASS · WARN · N/A
 
 | NFR | Status | Notes |
 |---|---|---|
@@ -77,6 +86,22 @@ Pressure-test the chosen approach before BUILD starts. Mark each: ✅ covered ·
 **Concerns to address during BUILD:**
 
 -
+
+---
+
+## Complexity & Mode
+
+Based on the architecture decisions and scope above:
+
+- [ ] **Hotfix** — broken in prod, fix now → Mode A
+- [ ] **Small** (< 1 day) → Mode A
+- [ ] **Medium** (1-5 days) → Mode A or B
+- [ ] **Feature** (5+ days) → Mode B
+
+**Selected mode:** [A / B]
+
+If Mode B → proceed to [task-breakdown.md](./task-breakdown.md)
+If Mode A → skip task breakdown, go straight to BUILD.
 
 ---
 
