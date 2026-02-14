@@ -62,7 +62,7 @@ These are signals, not failures. Stopping to refresh context is faster than debu
 | Rule | Why |
 |---|---|
 | **Brief is no-AI** | If you can't explain it without AI, you don't understand it enough to guide AI |
-| **Tasks < 300 lines** | LLM context window sweet spot. Bigger = hallucinations, lost context, drift |
+| **Tasks target < 300 lines** | Focused AI sessions produce better output. 300 is a guideline, not a hard ceiling — if a task needs 350 lines to be done right, that's fine. Don't sacrifice quality or split coherent logic just to hit a number. For full-stack features: split by layer (API = one Heartbeat, UI = another) — mixing BE and FE in one AI session produces worse output. |
 | **Describe before rewrite** | AI will silently drop edge cases it thinks are bugs. Describe what code does today in plain language, then rewrite from the description |
 | **Automated guardrails always run** | Linting + SAST on every PR. Automated = zero cost to enforce, no excuse to skip |
 | **Hotfix THINK is never zero** | 2 minutes to validate root cause. Otherwise you're patching symptoms |
@@ -178,9 +178,18 @@ You define the problem. AI helps you stress-test it. You make the decisions.
 
 **THINK inside a Mode B Heartbeat (light):**
 
+> **Mode B Heartbeats do NOT need a separate idea-brief or stress-test. The Macro-THINK already did that. Heartbeat THINK is just: re-read context + review your task from the breakdown.**
+
 | Step | Input | Output | Key | Time |
 |---|---|---|---|---|
 | **Review Context** | Updated project-context.md + this task from breakdown | Mental readiness | Re-read context. Check if anything changed since macro plan. Adjust approach if needed. | 5 min |
+
+### What THINK looks like at each level
+
+| Level | What you do | What you DON'T do | Time |
+|---|---|---|---|
+| **Macro-THINK** (once per feature) | Brief, stress-test, decisions, NFR check, breakdown | Write code | 60 min |
+| **Heartbeat THINK** (per task) | Re-read project-context.md, review task from breakdown | New brief, new stress-test, new decisions | 5 min |
 
 → [idea-brief.md template](templates/idea-brief.md) · [decisions.md template](templates/decisions.md) · [task-breakdown.md template](templates/task-breakdown.md)
 

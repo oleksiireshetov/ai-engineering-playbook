@@ -1,8 +1,13 @@
 # Idea Brief
 
+> Version: 0.2
+> Input: Raw idea in your head
+> Output: Scoped brief ready for AI stress-test
+
 > **THINK · Step 1 · 10 min · You write · No AI · No code**
 >
 > If you can't explain it without AI, you don't understand it enough to guide AI.
+> **When to use:** Once per feature (Macro-THINK). Individual Heartbeats within a feature do NOT need their own idea-brief — the task description in task-breakdown.md is your brief.
 
 ## What
 
@@ -12,9 +17,9 @@
 
 [Why does this matter? What problem does it solve? Who asked for it?]
 
-## Who
+## Who Will Use This
 
-[Who is affected? Users, other teams, downstream services?]
+[Who are the users of this feature? If no users yet — who will be first? If solo project with no users — write "Internal/solo, no external users yet."]
 
 ## Where
 
@@ -22,15 +27,15 @@
 
 ## Constraints
 
-[Deadlines, dependencies, tech debt, compliance, team availability]
+[What limits your options? Tech debt, third-party API limits, infra limitations, compliance, budget. Write "None" if truly unconstrained.]
 
 ## Out of Scope
 
-[What are you explicitly NOT doing? Be specific.]
+[What will people assume is included but isn't? Be explicit to prevent scope creep. If unsure — write "None — to be challenged during AI stress-test."]
 
 ## Success Criteria
 
-[How will you know this is done and done right?]
+[How will you test that this works? Be specific and testable. E.g., "When test fails, configured webhook receives POST within 30 seconds with correct payload." Not "webhooks work."]
 
 ## Complexity
 
@@ -41,5 +46,4 @@
 
 ---
 
-**Author:**
-**Date:**
+**Author:** [name] · **Date:** [YYYY-MM-DD]

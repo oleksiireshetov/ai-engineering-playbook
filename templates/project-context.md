@@ -1,5 +1,6 @@
 # Project Context
 
+> Version: 0.2
 > The living document that makes every AI session smarter than the last.
 > Feed it to AI at the start of every THINK and BUILD session.
 > Update it at the end of every Heartbeat (LEARN stage).
@@ -11,6 +12,17 @@
 **Name:** [Project name]
 **Description:** [One sentence — what does this system do?]
 **Repo:** [Link]
+
+## Scale
+
+[This shapes every AI decision. 3 users ≠ 30,000 users. AI will suggest Kafka and RBAC for a 3-user app if you don't tell it the scale.]
+
+| Metric | Current | Expected (6 months) |
+|---|---|---|
+| Users | | |
+| Daily active users | | |
+| Requests per day | | |
+| Data volume | | |
 
 ## Tech Stack
 

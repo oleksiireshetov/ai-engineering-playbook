@@ -1,5 +1,9 @@
 # Decision Log
 
+> Version: 0.2
+> Input: Completed Heartbeat(s)
+> Output: Lessons learned + patterns/anti-patterns
+
 > **LEARN · 5-10 min · After every Heartbeat (quick) and after every feature (full)**
 >
 > Before writing, answer: *What will AI get wrong next time if I don't update context now?*

@@ -1,4 +1,4 @@
-# The Heartbeat Framework — Overview
+# AI Engineering Playbook — Overview
 
 > A simple bug is one Heartbeat. A complex feature is a series of Heartbeats.
 > The rhythm remains the same: Think, Build, Review, Ship, Learn.
@@ -95,3 +95,6 @@ This isn't really about AI. It's about:
 
 AI just forces these truths to the surface faster.
 
+---
+
+**Does this match how your team works? What would break? What's missing?**

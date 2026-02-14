@@ -1,5 +1,9 @@
 # Architecture Decisions
 
+> Version: 0.2
+> Input: idea-brief.md + project-context.md + DB schema
+> Output: Architecture decisions + NFR notes ready for task breakdown
+
 > **THINK · Steps 2-4 · 30 min · With AI · NO CODE**
 >
 > Feed AI your brief, project context, and schema. Ask for options. Challenge them. You decide.
@@ -8,7 +12,15 @@
 
 [What did you feed in? Brief, project-context.md, schema files, existing code — list it so the conversation is reproducible.]
 
+## AI Stress-Test
+
+> Prompt: "Review this brief. Give me numbered questions about edge cases, missing requirements, and risks. One question per line. I'll reply by number."
+
+[Paste the numbered questions AI asked and your answers here.]
+
 ## Options Explored
+
+> Prompt: "Given this brief and project context, suggest 2-3 architecture approaches. For each: approach summary, pros, cons, estimated complexity. No code."
 
 ### Option A: [Name]
 
@@ -46,6 +58,9 @@
 
 ## NFR Check (gate)
 
+> Continue in the same AI session — context is already loaded.
+> Prompt: "Review these architecture decisions against these NFRs: security, performance, observability, error handling, rollback. Flag any concerns."
+
 Pressure-test the chosen approach before BUILD starts. Mark each: ✅ covered · ⚠️ needs attention · ➖ not applicable.
 
 | NFR | Status | Notes |
@@ -65,5 +80,4 @@ Pressure-test the chosen approach before BUILD starts. Mark each: ✅ covered ·
 
 ---
 
-**Author:**
-**Date:**
+**Author:** [name] · **Date:** [YYYY-MM-DD]
