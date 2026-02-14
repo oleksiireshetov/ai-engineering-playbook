@@ -1,6 +1,6 @@
 # AI Engineering Playbook 💓
 
-> v0.1.0 — Early draft. Feedback welcome.
+> v0.2.0 — Early draft. Feedback welcome.
 
 A step-by-step playbook for building software with AI. Not a new SDLC — a discipline layer you add on top of whatever process you already use.
 
