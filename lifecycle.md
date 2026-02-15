@@ -2,11 +2,11 @@
 
 ## What Is This
 
-A step-by-step engineering lifecycle for building software with AI. Not a new SDLC — a discipline layer you add on top of whatever process you already use.
+A discipline layer for building software with AI. Not a new SDLC — add it on top of whatever process you already use.
 
 AI changes the speed of code generation, but not the need for discipline. Without structure, AI-driven development produces **context rot** — where the codebase becomes a mess of hallucinations and technical debt.
 
-This playbook treats **context as a living artifact** that flows through every stage, and keeps the roles clear: AI writes code, you make decisions.
+This playbook keeps the roles clear: AI writes code, you make decisions.
 
 > *A simple bug is one Heartbeat. A complex feature is a series of Heartbeats. The rhythm remains the same: Think, Build, Review, Ship, Learn.*
 
@@ -14,7 +14,7 @@ This playbook treats **context as a living artifact** that flows through every s
 
 ## The Heartbeat
 
-A Heartbeat is the atomic unit of delivery. It always completes all 5 stages. The depth changes by context, but no stage is ever skipped.
+A Heartbeat is one pass through all 5 stages. The depth changes by context, but no stage is ever skipped.
 
 | Spec | Rule |
 |---|---|
@@ -24,22 +24,20 @@ A Heartbeat is the atomic unit of delivery. It always completes all 5 stages. Th
 | **Golden Rule** | Every Heartbeat completes all 5 stages. Always. |
 
 ```
-context → THINK → BUILD → REVIEW → SHIP → LEARN
-   ↑                                         │
-   └──────────── project-context.md ─────────┘
+THINK → BUILD → REVIEW → SHIP → LEARN
 ```
 
 ---
 
 ## The Backbone: project-context.md
 
-`project-context.md` is the living document that makes the cycle compound. It describes your project as it is today: architecture, tech stack, DB schema, API contracts, conventions, known gotchas, recent changes.
+`project-context.md` is the living document that describes your project as it is today: architecture, tech stack, DB schema, API contracts, conventions, known gotchas.
 
 - **THINK** consumes it — AI needs context to give good options
 - **BUILD** consumes it — AI needs context to write correct code
-- **LEARN** updates it — what changed flows back in for the next Heartbeat
+- **LEARN** updates it — when the project changed (new tables, endpoints, patterns, gotchas)
 
-Without it, every AI session starts from zero. With it, Heartbeat #10 is smarter than Heartbeat #1.
+Update project-context.md when the project changed — not when a Heartbeat finished. Most Heartbeats won't change it. That's fine.
 
 → [project-context.md template](templates/project-context.md)
 
@@ -47,11 +45,11 @@ Without it, every AI session starts from zero. With it, Heartbeat #10 is smarter
 
 Context rot happens silently. If 2 or more of these are true, **stop BUILD and refresh project-context.md** before continuing.
 
-- [ ] AI proposes APIs you "almost have" but not quite
-- [ ] You keep correcting naming conventions mid-session
-- [ ] Tests pass but behavior feels "off"
-- [ ] You explain the same thing twice in one Heartbeat
-- [ ] You're unsure whether the code still matches the brief
+- AI proposes APIs you "almost have" but not quite
+- You keep correcting naming conventions mid-session
+- Tests pass but behavior feels "off"
+- You explain the same thing twice in one Heartbeat
+- You're unsure whether the code still matches the brief
 
 These are signals, not failures. Stopping to refresh context is faster than debugging rotten output.
 
@@ -93,9 +91,7 @@ The 5 stages are always the same. What changes is whether you run them once or i
 For bug fixes, hotfixes, small tasks, tech debt items — anything that fits in one Heartbeat.
 
 ```
-context → THINK → BUILD → REVIEW → SHIP → LEARN
-   ↑                                         │
-   └──────────── project-context.md ─────────┘
+THINK → BUILD → REVIEW → SHIP → LEARN
 ```
 
 One pass through all 5 stages. SHIP means deploy to production (or main branch). Done.
@@ -106,7 +102,7 @@ For features that need multiple tasks. A planning layer wraps a series of Heartb
 
 ```
 ┌─────────────────────────────────────────────┐
-│ Macro-THINK (once)                          │
+│ Feature THINK (once)                        │
 │  Brief → Stress-Test → Decisions →          │
 │  NFR Check → Task Breakdown                 │
 │  Output: [Task 1, Task 2, ... Task N]       │
@@ -128,17 +124,17 @@ For features that need multiple tasks. A planning layer wraps a series of Heartb
                │
                ▼
 ┌─────────────────────────────────────────────┐
-│ Macro-LEARN (once)                          │
-│  Feature retro + decision log + real numbers│
+│ Feature LEARN (once)                        │
+│  Retro + heartbeat log + real numbers       │
 └─────────────────────────────────────────────┘
 ```
 
 **Key difference in Mode B:**
-- **THINK** inside each Heartbeat is light — re-read updated context, review how this task fits the macro plan
+- **THINK** inside each Heartbeat is light — re-read context, review how this task fits the plan
 - **SHIP** inside each Heartbeat means **merge to feature branch** (integration), not deploy to production
 - **SHIP** in the final Heartbeat means **deploy to production**
-- **LEARN** inside each Heartbeat keeps project-context.md fresh for the next task
-- **Macro-LEARN** at the end is the full retrospective — where did decisions hold up, where did they break, real numbers
+- **LEARN** inside each Heartbeat — log what happened. Update project-context.md only if the project changed.
+- **Feature LEARN** at the end is the full retrospective — where did decisions hold up, where did they break, real numbers
 
 ---
 
@@ -148,11 +144,11 @@ Each stage has a universal intent. The action scales to the context.
 
 | Stage | Intent | Mode A (single task) | Mode B (task within feature) |
 |---|---|---|---|
-| **THINK** | Context prep | Why is it broken? What's the fix? | How does this task fit the macro plan? |
+| **THINK** | Context prep | Why is it broken? What's the fix? | How does this task fit the plan? |
 | **BUILD** | Execution | Code the fix | Code the sub-feature |
 | **REVIEW** | Verification | Did it fix the bug? | Does it pass the hallucination check? |
 | **SHIP** | Integration | Deploy to production | Merge to feature branch |
-| **LEARN** | Retention | Why did this bug exist? | Update context for the next task |
+| **LEARN** | Retention | Why did this bug exist? | Log what happened, update context if project changed |
 
 ---
 
@@ -166,7 +162,7 @@ You define the problem. AI helps you stress-test it. You make the decisions.
 |---|---|---|
 | Your head → then stress-tested brief + project-context.md + DB schema | idea-brief.md → decisions.md → task-breakdown.md + backlog.md | Brief is no-AI. Stress-test is one round. Everything after is with AI but NO CODE. |
 
-**Steps (full, for Mode A or Macro-THINK in Mode B):**
+**Steps (full, for Mode A or Feature THINK in Mode B):**
 
 | Step | Input | Output | Key | Time |
 |---|---|---|---|---|
@@ -188,17 +184,17 @@ idea-brief.md (you write, no AI)
 
 **THINK inside a Mode B Heartbeat (light):**
 
-> **Mode B Heartbeats do NOT need a separate idea-brief or stress-test. The Macro-THINK already did that. Heartbeat THINK is just: re-read context + review your task from the breakdown.**
+> **Mode B Heartbeats do NOT need a separate idea-brief or stress-test. Feature THINK already did that. Heartbeat THINK is just: re-read context + review your task from the breakdown.**
 
 | Step | Input | Output | Key | Time |
 |---|---|---|---|---|
-| **Review Context** | Updated project-context.md + this task from breakdown | Mental readiness | Re-read context. Check if anything changed since macro plan. Adjust approach if needed. | 5 min |
+| **Review Context** | project-context.md + this task from breakdown | Mental readiness | Re-read context. Check if anything changed since the plan. Adjust approach if needed. | 5 min |
 
 ### What THINK looks like at each level
 
 | Level | What you do | What you DON'T do | Time |
 |---|---|---|---|
-| **Macro-THINK** (once per feature) | Brief, stress-test, decisions, NFR check, mode selection, breakdown | Write code | 60 min |
+| **Feature THINK** (once per feature) | Brief, stress-test, decisions, NFR check, mode selection, breakdown | Write code | 60 min |
 | **Heartbeat THINK** (per task) | Re-read project-context.md, review task from breakdown | New brief, new stress-test, new decisions | 5 min |
 
 → [idea-brief.md template](templates/idea-brief.md) · [decisions.md template](templates/decisions.md) · [task-breakdown.md template](templates/task-breakdown.md) · [backlog.md template](templates/backlog.md)
@@ -315,13 +311,14 @@ The stage that makes the cycle compound. Without LEARN, every Heartbeat starts f
 
 | Input | Output | Key |
 |---|---|---|
-| What you learned during this Heartbeat | Updated project-context.md + heartbeat-log.md | Do it now. Not later. Later means never. |
+| What you learned during this Heartbeat | heartbeat-log.md entry + project-context.md (if project changed) | Do it now. Not later. Later means never. |
 
-**Steps (Heartbeat LEARN — after every task):**
+**Steps:**
 
 | Step | Input | Output | Key | Time |
 |---|---|---|---|---|
-| **Update Context** | What changed during this Heartbeat | Updated project-context.md | Add new tables, endpoints, renamed variables, changed constraints, gotchas. Keeps the next AI session accurate. | 3 min |
+| **Log** | What happened during this Heartbeat | Entry in heartbeat-log.md | What worked, what didn't, hallucinations caught, numbers. | 5 min |
+| **Update Context** | What changed in the project | Updated project-context.md | Only if the project itself changed — new tables, endpoints, patterns, gotchas. Most Heartbeats won't need this. | 3 min |
 
 **The required question before you close LEARN:**
 
@@ -329,12 +326,12 @@ The stage that makes the cycle compound. Without LEARN, every Heartbeat starts f
 
 If you have an answer — put it in project-context.md. If you don't — you're done.
 
-**Steps (Macro-LEARN — after all Heartbeats, Mode B only):**
+**Feature LEARN (after all Heartbeats, Mode B only):**
 
 | Step | Input | Output | Key | Time |
 |---|---|---|---|---|
 | **Update Context** | Full feature changes | Updated project-context.md | Broader patterns, architectural changes, new conventions that emerged. | 5 min |
-| **Decision Log Entry** | What happened across all Heartbeats | Entry in heartbeat-log.md | Real numbers. Where did architecture decisions hold up? Where did they break? Would you use AI for this again? | 10 min |
+| **Feature Retro** | What happened across all Heartbeats | Entry in heartbeat-log.md | Real numbers. Where did architecture decisions hold up? Where did they break? Would you use AI for this again? | 10 min |
 
 **Do it now. Not "later." Later means never.**
 
@@ -348,7 +345,7 @@ Every type uses the same 5 stages. The depth changes, the rhythm doesn't.
 
 | Type | Mode | THINK | BUILD | REVIEW | SHIP | LEARN |
 |---|---|---|---|---|---|---|
-| **Feature** | B | Macro-THINK (full) | Full guardrails | Full gates | Feature branch → prod on final | Heartbeat + Macro-LEARN |
+| **Feature** | B | Feature THINK (full) | Full guardrails | Full gates | Feature branch → prod on final | Heartbeat log + Feature retro |
 | **Bug fix** | A | Brief + root cause | Guardrails | Full gates | Deploy to prod | Root cause log |
 | **Refactor** | A or B | Decisions + scope boundaries | Guardrails + describe before rewrite | Full gates + before/after metrics | Incremental, flag if risky | Patterns changed |
 | **Hotfix** | A | Root cause validation (2 min) | Guardrails (automated checks still run) | Expedited, no test shortcuts | Emergency deploy + extended monitoring | Post-mortem |
@@ -356,14 +353,3 @@ Every type uses the same 5 stages. The depth changes, the rhythm doesn't.
 | **Spike/POC** | A | What are we learning? | Relaxed guardrails | Light review | **Don't ship spikes** | Findings only, kill the code |
 
 ---
-
-## Hidden Dangers by Work Type
-
-| Type | Watch for |
-|---|---|
-| **Feature** | Scope creep during BUILD |
-| **Bug fix** | Treating symptom, not disease |
-| **Hotfix** | Secondary regression |
-| **Refactor** | Endless refactor with no clear exit |
-| **Tech debt** | Expanding scope beyond original boundary |
-| **Spike** | "Throwaway" code surviving to production |

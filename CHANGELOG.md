@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.4.0 — 2026-02-15
+
+- replace Macro-THINK/LEARN with Feature THINK/LEARN
+- simplify Heartbeat diagram (remove circular project-context arrow)
+- fix project-context update rule: update when project changed, not every Heartbeat
+- split LEARN into Log (always) + Update Context (only if project changed)
+- delete lifecycle-overview.md (README covers intro, lifecycle.md covers the rest)
+- remove context rot checkboxes (plain bullets)
+- remove Hidden Dangers table
+- rewrite README intro (drop vendor comparisons, sharpen failure modes list)
+- fix README principles (remove project-context feedback loop claim)
+- delete Coming Soon section from README
+
 ## 0.3.0 — 2026-02-14
 
 - restructure THINK flow: stress-test in brief, mode selection in decisions

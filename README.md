@@ -2,35 +2,31 @@
 
 > v0.3.0 — Early draft. Feedback welcome.
 
-A step-by-step lifecycle for building software with AI. Not a new SDLC — a discipline layer you add on top of whatever process you already use.
+A discipline layer for building software with AI. Not a new SDLC — add it on top of whatever process you already use.
 
 ## Why This Exists
 
 AI coding tools are everywhere. Engineering discipline for using them isn't.
 
-Most teams are figuring it out as they go — prompting, generating, reviewing, shipping — without a shared process for how AI-assisted work should flow. The result is predictable: fast output, slow cleanup, growing tech debt that nobody fully understands.
+Most teams are figuring it out as they go — prompting, generating, reviewing, shipping — without a shared process for how AI-assisted work should flow. The result: fast output, slow cleanup, growing tech debt that nobody fully understands.
 
-The options that exist today don't quite fit:
+This playbook addresses the actual failure modes of AI-assisted development:
 
-- **Vendor guides** tell you how to set up Copilot or Cursor — tooling setup, not engineering process
-- **Enterprise frameworks** like Amazon's AI-DLC replace your entire SDLC — too heavy to adopt incrementally
-- **Best practice blogs** say "review AI code carefully" — true, but not actionable
+- **Context rot** — AI losing track of your codebase as sessions grow
+- **Hallucinations** — code that looks right but calls things that don't exist
+- **Scope creep** — AI happily generating beyond what was asked
+- **Sunk-cost spirals** — fighting the AI instead of writing it yourself
 
-What's missing is a lightweight lifecycle that plugs into your existing workflow and addresses the actual failure modes of AI-assisted development: **context rot** (AI losing track of your codebase), **hallucinations** (code that looks right but calls things that don't exist), **scope creep** (AI happily generating beyond what was asked), and **sunk-cost spirals** (fighting the AI instead of writing it yourself).
-
-This playbook fills that gap. Built from real production experience with AI-assisted development in a regulated, high-volume environment — not from theory.
+Built from real production experience — not from theory.
 
 ## How It Works: The Heartbeat
 
 Every piece of work — feature, bug fix, hotfix, refactor — follows the same rhythm:
-
 ```
-context → THINK → BUILD → REVIEW → SHIP → LEARN
-   ↑                                         │
-   └──────────── project-context.md ─────────┘
+THINK → BUILD → REVIEW → SHIP → LEARN
 ```
 
-A Heartbeat is one task: < 300 lines, 1-4 hours, all 5 stages. A bug fix is one Heartbeat. A feature is a series of Heartbeats. The rhythm stays the same.
+`project-context.md` feeds every THINK and BUILD session. It gets updated only when the project itself changes — new tables, endpoints, patterns, or gotchas.
 
 > Try it on one task. If the output is cleaner and the process is clearer — keep going.
 
@@ -84,19 +80,13 @@ Copy these into your project. Fill them in as you go through the lifecycle.
 | [backlog.md](templates/backlog.md) | THINK | Deferred items from stress-test and decisions |
 | [heartbeat-log.md](templates/heartbeat-log.md) | BUILD + REVIEW + LEARN | Log each Heartbeat |
 
-### Coming Soon
-
-- **Rules** — `.cursorrules` templates and system prompts for AI sessions
-- **Prompts** — proven prompts for each stage (stress-test, review, breakdown)
-- **Patterns** — what works and what doesn't, by task type
-
 ## Principles
 
 This isn't really about AI. It's about:
 
 - **Decision ownership** — you decide, AI executes
 - **Scope control** — small tasks, clear boundaries, kill switch when it's not working
-- **Knowledge compounding** — every Heartbeat feeds the next through project-context.md
+- **Knowledge compounding** — what you learn today makes tomorrow's AI sessions better
 
 AI just forces these truths to the surface faster.
 
